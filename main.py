@@ -90,8 +90,8 @@ def calculate_total_assets(assets):
     print(prices) 
 
     for asset in assets: 
-        for account in ASSETS[asset]:
-            total += ASSETS[asset][account] * prices[asset]
+        for account in assets[asset]:
+            total += assets[asset][account] * prices[asset]
 
     return total         
     
