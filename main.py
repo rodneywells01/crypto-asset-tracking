@@ -99,4 +99,4 @@ def calculate_total_assets(assets):
 if __name__ == "__main__":
     my_assets = load_assets()
     total_assets = calculate_total_assets(my_assets)
-    print(f"My crypto is worth: ${total_assets}")
+    print(f"My crypto is worth: ${'{:,}'.format(total_assets)}")
