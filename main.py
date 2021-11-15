@@ -27,7 +27,17 @@ COIN_DETAILS_BY_TICKER = {
         "id": "ripple",
         "symbol": "xrp",
         "name": "XRP"
-    }
+    },
+    "samo": {
+        "id": "samoyedcoin",
+        "symbol": "samo",
+        "name": "Samoyedcoin"
+    },
+    "grape": {
+        "id": "grape-2",
+        "symbol": "grape",
+        "name": "Grape Protocol"
+    }, 
 }
 
 
@@ -81,6 +91,35 @@ def fetch_all_prices():
 
     return prices
 
+def calculate_total_assets_crazy(assets): 
+    """
+    Sum the total value of all of my accounts. 
+    """
+    total = 0 
+    prices = fetch_all_prices() 
+    print(prices) 
+
+    crazy_total = 0 
+
+    crazy_9x_prices = {
+        'sol': 9 * 245.96, 
+        'btc': 9 * 61582, 
+        'eth': 9 * 4513.62, 
+        'dot': 9 * 51.47, 
+        'xrp': 9 * 1.17
+    }
+
+
+    for asset in assets: 
+        for account in assets[asset]:
+            total += assets[asset][account] * prices[asset]
+            crazy_total += assets[asset][account] * crazy_9x_prices[asset]
+
+
+    # print(f"Crazy Total: ${'{:,}'.format(crazy_total)}")
+    return total     
+
+
 def calculate_total_assets(assets): 
     """
     Sum the total value of all of my accounts. 
@@ -89,10 +128,13 @@ def calculate_total_assets(assets):
     prices = fetch_all_prices() 
     print(prices) 
 
+
     for asset in assets: 
         for account in assets[asset]:
             total += assets[asset][account] * prices[asset]
 
+
+    # print(f"Crazy Total: ${'{:,}'.format(crazy_total)}")
     return total         
     
 
